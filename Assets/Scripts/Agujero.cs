@@ -11,7 +11,7 @@ public class Agujero : MonoBehaviour
         {
             Player player = collision.GetComponent<Player>();
             player.PlayWinSFX();
-            if (Puntos.puntos == 6)
+            if (Puntos.puntos == 8)
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }

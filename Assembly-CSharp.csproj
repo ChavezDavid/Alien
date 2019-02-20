@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Puntos.cs" />
     <Compile Include="Assets\Scripts\ScrollingBackground.cs" />
+    <Compile Include="Assets\Scripts\Slide.cs" />
     <Reference Include="Cinemachine">
       <HintPath>C:/Users/Usuario/Documents/GitHub/Alien/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>

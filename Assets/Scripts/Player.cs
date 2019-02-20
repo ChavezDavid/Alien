@@ -5,6 +5,7 @@ using Core.Movement;
 
 public class Player : MonoBehaviour
 {
+
     [SerializeField]
     float moveSpeed = 0f;
 
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
 
     float moveX;
     bool jump = false;
+    bool planear1 = false;
     [SerializeField]
     AudioClip sfx_coin;
     [SerializeField]
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour
     float maxSpeed = 3f;
     Vector2 ClampedVelocity;
 
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -44,7 +47,6 @@ public class Player : MonoBehaviour
         auds = GetComponent<AudioSource>();
         rb2d = GetComponent<Rigidbody2D>();
     }
-
     void Update()
     {
         moveX = Movement.Axis.x;
@@ -74,6 +76,7 @@ public class Player : MonoBehaviour
 
 
         }
+
     }
 
 

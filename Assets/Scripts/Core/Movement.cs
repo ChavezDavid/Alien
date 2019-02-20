@@ -6,14 +6,13 @@ namespace Core.Movement
 {
     public class Movement
     {
-        static Vector2 clampedVelocity;
-
+        static Vector2 ClampedVelocity;
         /// <summary>
         /// This function returns a Vector2 Axis of Horixontal and Vertical Inputs.
         /// </summary>
         public static Vector2 Axis
         {
-            get => new Vector2(Input.GetAxis("Horizontal"), 
+            get => new Vector2(Input.GetAxis("Horizontal"),
                     Input.GetAxis("Vertical"));
         }
 
@@ -48,35 +47,35 @@ namespace Core.Movement
         }
 
         /// <summary>
-        /// Returns if player is touching jump button
+        /// Returns if player is touching jumping button.
         /// </summary>
-        public static bool Btn_Jump
+        public static bool btn_Jump
         {
             get => Input.GetButtonDown("Jump");
+
         }
 
         /// <summary>
-        /// Makes player jumps with an impulse in rigidbody.
+        /// Makes player jumps with impulse in rigidbody.
         /// </summary>
-        /// <param name="rb2d">Rigidbody2D component of player.</param>
-        /// <param name="jumpForce">The magnitude of the jump.</param>
+        /// <param name="rb2d">Rigidbidy2D component of player</param>
+        /// <param name="jumpForce">The magnitude</param>
         public static void PhysicJumpUp(Rigidbody2D rb2d, float jumpForce)
         {
             rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-
         /// <summary>
-        /// Moves the player with physics on X.
+        /// 
         /// </summary>
-        /// <param name="rb2d">Rigidbody2D component of player.</param>
-        /// <param name="moveSpeed">The amount of force for movement in x.</param>
-        /// <param name="maxSpeed">The max amount of player movement force in x.</param>
+        /// <param name="rb2d"></param>
+        /// <param name="moveSpeed"></param>
+        /// <param name="maxSpeed"></param>
         public static void PhysicMovement(Rigidbody2D rb2d, float moveSpeed, float maxSpeed)
         {
             rb2d.AddForce(Vector2.right * moveSpeed * Axis.x, ForceMode2D.Impulse);
-            clampedVelocity = Vector2.ClampMagnitude(rb2d.velocity, maxSpeed);
+            ClampedVelocity = Vector2.ClampMagnitude(rb2d.velocity, maxSpeed);
 
-            rb2d.velocity = new Vector2(clampedVelocity.x, rb2d.velocity.y);
+            rb2d.velocity = new Vector2(ClampedVelocity.x, rb2d.velocity.y);
         }
     }
 }

@@ -10,8 +10,11 @@ EditorBuildSettings:
     guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Menu.unity
-    guid: edb2b137119afc44292add7bb318bb72
+    guid: dd1d2fed2de516447aafd5633b312019
   - enabled: 1
-    path: Assets/Scenes/AlienScene01.unity
-    guid: 467813ab3b136d4468a193d9c5381fce
+    path: Assets/Scenes/SampleScene.unity
+    guid: 95c3a0d1725658840a96d82e50705327
+  - enabled: 1
+    path: Assets/Scenes/Nivel2.unity
+    guid: 180382b62d1bf8346aec69e6c5325942
   m_configObjects: {}

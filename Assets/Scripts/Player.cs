@@ -13,14 +13,14 @@ public class Player : MonoBehaviour
     SpriteRenderer spr;
 
     float moveX;
-    bool jump = false;
-    bool planear1 = false;
     [SerializeField]
     AudioClip sfx_coin;
     [SerializeField]
     AudioClip sfx_jump;
     [SerializeField]
     AudioClip sfx_win;
+    [SerializeField]
+    AudioClip sfx_dead;
     AudioSource auds;
 
     Rigidbody2D rb2d;
@@ -51,17 +51,18 @@ public class Player : MonoBehaviour
     {
         moveX = Movement.Axis.x;
 
-        // Movement.DeltaMovement(transform, moveSpeed);
-        rb2d.AddForce(Vector2.right * moveSpeed * moveX, ForceMode2D.Impulse);
-        ClampedVelocity = Vector2.ClampMagnitude(rb2d.velocity, maxSpeed);
-        rb2d.velocity = new Vector2(ClampedVelocity.x, rb2d.velocity.y);
+        //Movement.DeltaMovement(transform, moveSpeed);
 
         anim.SetFloat("MoveX", Mathf.Abs(moveX));
 
         spr.flipX = moveX < 0f ? true : moveX > 0f ? false : spr.flipX;
-        if (rb2d.velocity.y == 0)
+
+    }
+    public void UpdateState(string state = null)
+    {
+        if(state != null)
         {
-            anim.SetBool("Jump", false);
+            anim.Play(state);
         }
     }
     private void FixedUpdate()
@@ -71,9 +72,9 @@ public class Player : MonoBehaviour
         if (Movement.btn_Jump && Grounding)
         {
             auds.PlayOneShot(sfx_jump, 3f);
-            anim.SetBool("Jump", true);
-            Movement.PhysicJumpUp(rb2d, jumpForce);
 
+            Movement.PhysicJumpUp(rb2d, jumpForce);
+            UpdateState("jump");
 
         }
 
@@ -89,7 +90,10 @@ public class Player : MonoBehaviour
     {
         auds.PlayOneShot(sfx_win, 4f);
     }
-
+    public void PlayDeadSFX()
+    {
+        auds.PlayOneShot(sfx_dead, 30f);
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = rayColor;

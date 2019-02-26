@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Puntos : MonoBehaviour
 {
     public static int puntos = 0;
-    public static int vida = 4;
+    public static int vida = 2;
     public Text textoPunto;
     public Text textoVida;
     // Start is called before the first frame update
@@ -14,6 +14,7 @@ public class Puntos : MonoBehaviour
     {
         ActualizarMarcadorPuntos();
         ActualizarVida();
+
     }
     void ActualizarMarcadorPuntos()
     {
@@ -30,7 +31,7 @@ public class Puntos : MonoBehaviour
     }
     public void PerderVida()
     {
-        Puntos.vida++;
+        Puntos.vida--;
         ActualizarVida();
     }
 }
